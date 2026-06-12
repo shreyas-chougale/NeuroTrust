@@ -2,6 +2,8 @@
 
 Neurotrust is a full-stack Machine Learning application designed to perform dynamic, risk-based authentication. By analyzing behavioral and contextual anomalies (such as device type, location, login time, and failed attempts), the system utilizes a Random Forest model to calculate a real-time risk score and enforce Zero Trust security policies (ALLOW, MFA_REQUIRED, BLOCK).
 
+Live Demo: https://neuro-trust-ten.vercel.app/
+
 ## 🚀 Features
 - **Machine Learning Pipeline**: End-to-end scikit-learn pipeline featuring a Random Forest Classifier optimized via GridSearchCV.
 - **Explainable AI**: Model Insights dashboard providing feature importance and weight distributions to security administrators.
