@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fira+Code:wght@300..700&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: 'DM Sans', sans-serif;
+  --font-display: 'Rajdhani', sans-serif;
+  --font-mono: 'Fira Code', monospace;
+
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-success: hsl(var(--success));
+  --color-success-foreground: hsl(var(--success-foreground));
+  --color-warning: hsl(var(--warning));
+  --color-warning-foreground: hsl(var(--warning-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+}
+
+:root {
+  /* Dark Cyberpunk Military Grade Theme */
+  --background: 215 93% 6%;      /* #010A18 - Very dark navy */
+  --foreground: 213 31% 91%;     /* #DCE3EB - Near white */
+  
+  --card: 215 45% 9%;            /* #0D1623 - Dark navy panel */
+  --card-foreground: 213 31% 91%;
+  
+  --popover: 215 45% 9%;
+  --popover-foreground: 213 31% 91%;
+  
+  --primary: 189 100% 50%;       /* #00D4FF - Bright Cyan */
+  --primary-foreground: 215 93% 6%;
+  
+  --secondary: 215 60% 12%;      /* #0C1E36 - Slightly lighter navy */
+  --secondary-foreground: 189 100% 50%;
+  
+  --muted: 215 45% 15%;
+  --muted-foreground: 215 16% 55%; /* #7A899C - Grey-blue */
+  
+  --accent: 189 100% 30%;        /* Deep Cyan */
+  --accent-foreground: 213 31% 91%;
+  
+  --destructive: 0 84% 60%;      /* #F93A3A - Red */
+  --destructive-foreground: 0 0% 100%;
+
+  --success: 142 71% 45%;        /* #22C55E - Neon Green */
+  --success-foreground: 215 93% 6%;
+
+  --warning: 43 96% 56%;         /* #F59E0B - Amber */
+  --warning-foreground: 215 93% 6%;
+  
+  --border: 199 47% 20%;         /* #1A3A4A - Dim cyan border */
+  --input: 215 45% 11%;
+  --ring: 189 100% 50%;
+  
+  --radius: 0.25rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased overflow-x-hidden selection:bg-primary/30 selection:text-primary;
+    background-image: 
+      radial-gradient(circle at 50% -20%, hsla(var(--primary) / 0.08) 0%, transparent 60%),
+      radial-gradient(circle at 100% 100%, hsla(var(--primary) / 0.03) 0%, transparent 50%);
+    background-attachment: fixed;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply font-bold tracking-wider uppercase;
+  }
+}
+
+/* Custom Cyberpunk Utilities */
+@layer utilities {
+  .cyber-clip {
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  }
+  
+  .cyber-clip-reverse {
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  }
+  
+  .cyber-clip-tab {
+    clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%, 0 10px);
+  }
+
+  .neon-text-primary {
+    text-shadow: 0 0 10px hsla(var(--primary) / 0.5), 0 0 20px hsla(var(--primary) / 0.3);
+  }
+
+  .neon-border-primary {
+    box-shadow: 0 0 10px hsla(var(--primary) / 0.2), inset 0 0 10px hsla(var(--primary) / 0.1);
+  }
+  
+  .neon-border-success {
+    box-shadow: 0 0 15px hsla(var(--success) / 0.3), inset 0 0 10px hsla(var(--success) / 0.1);
+  }
+  
+  .neon-border-warning {
+    box-shadow: 0 0 15px hsla(var(--warning) / 0.3), inset 0 0 10px hsla(var(--warning) / 0.1);
+  }
+  
+  .neon-border-destructive {
+    box-shadow: 0 0 15px hsla(var(--destructive) / 0.3), inset 0 0 10px hsla(var(--destructive) / 0.1);
+  }
+
+  .scanlines {
+    position: relative;
+  }
+  .scanlines::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(255,255,255,0),
+      rgba(255,255,255,0) 50%,
+      rgba(0,0,0,0.2) 50%,
+      rgba(0,0,0,0.2)
+    );
+    background-size: 100% 4px;
+    z-index: 50;
+    pointer-events: none;
+    opacity: 0.4;
+  }
+  
+  .grid-bg {
+    background-image: linear-gradient(hsla(var(--primary)/0.05) 1px, transparent 1px),
+                      linear-gradient(90deg, hsla(var(--primary)/0.05) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+}
